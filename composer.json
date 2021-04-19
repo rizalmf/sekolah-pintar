@@ -1,0 +1,27 @@
+{
+    "name": "moritz-h/slim3-rest-skeleton",
+    "description": "Slim 3",
+    "license": "BSD-3-Clause",
+    "type": "project",
+    "keywords": ["slim-framework", "skeleton", "rest"],
+    "authors": [
+        {
+            "name": "Rizal",
+            "homepage": "https://github.com/rizalmf"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.0",
+        "monolog/monolog": "^1.13",
+        "vlucas/phpdotenv": "^3.3",
+        "voku/anti-xss":"^4.1",
+        "firebase/php-jwt":"^5.2",
+        "illuminate/database":"~5.1",
+        "illuminate/events":"~5.1"
+    }
+}
