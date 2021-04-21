@@ -5,35 +5,67 @@ use Dotenv\Environment\Adapter\ServerConstAdapter;
 use Dotenv\Environment\DotenvFactory;
 use Dotenv\Dotenv;
 
-if(! defined('ENVIRONMENT') )
-{
-    if (isset($_SERVER['SERVER_NAME'])) {
-        $domain = $_SERVER['SERVER_NAME'];
-    } else {
-        $domain = 'cli';
-    }
+/*
+| -------------------------------------------------------------------
+|   IP staging & staging-beta
+| -------------------------------------------------------------------
+|
+*/
+$DEVELOPMENT_DOMAIN = [
+    'localhost',
+    '127.0.0.1',
+];
 
-    //============================
-    //NOTE: Global environment
-    //============================
-    switch($domain) {
-        case 'api.antrian.com': // future
-            define('ENVIRONMENT', 'production');
-            break;
-        case 'xxx.xxx.xxx.xxx' :
-            define('ENVIRONMENT', 'testing');
-            break;
+/*
+| -------------------------------------------------------------------
+|   IP production
+| -------------------------------------------------------------------
+|
+*/
+$PRODUCTION_DOMAIN = [
+    'sekolah.rizalmaulanaf.masuk.web.id'
+];
 
-        case 'localhost' :
-            define('ENVIRONMENT', 'development');
-            break;
+/*
+| -------------------------------------------------------------------
+|   PORTS public 
+| -------------------------------------------------------------------
+| - staging[DEV], 
+| - staging-beta[BETA],
+| - production[PROD] 
+|
+*/
+$PORTS = [
+    'DEV' => 80,
+    // 'PROD' => 80
+];
 
-        case 'cli':
-        default :
-            define('ENVIRONMENT', 'development');
-            break;
-    }
-}
+/*
+| -------------------------------------------------------------------
+|   Define domain & port
+| -------------------------------------------------------------------
+|
+*/
+$domain = $_SERVER['SERVER_NAME'];
+$port = $_SERVER['SERVER_PORT'];
+
+/*
+| -------------------------------------------------------------------
+|   Define Environment
+| -------------------------------------------------------------------
+|
+*/
+if (in_array($domain, $PRODUCTION_DOMAIN)) {
+    define('ENVIRONMENT', 'production');
+} else 
+    define('ENVIRONMENT', 'development');
+
+/*
+| -------------------------------------------------------------------
+|   Load Environment
+| -------------------------------------------------------------------
+|
+*/
 $file = '.env.' . strtolower(ENVIRONMENT);
 
 $factory = new DotenvFactory([new EnvConstAdapter(), new ServerConstAdapter()]);

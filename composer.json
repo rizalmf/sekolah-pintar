@@ -1,7 +1,7 @@
 {
-    "name": "moritz-h/slim3-rest-skeleton",
-    "description": "Slim 3",
-    "license": "BSD-3-Clause",
+    "name": "rizalmf/sekolah-pintar",
+    "description": "Sekolah berbasis online",
+    "license": "MIT",
     "type": "project",
     "keywords": ["slim-framework", "skeleton", "rest"],
     "authors": [
@@ -22,6 +22,11 @@
         "voku/anti-xss":"^4.1",
         "firebase/php-jwt":"^5.2",
         "illuminate/database":"~5.1",
-        "illuminate/events":"~5.1"
+        "illuminate/events":"~5.1",
+        "guzzlehttp/guzzle": "^7.3",
+        "zircote/swagger-php": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
     }
 }

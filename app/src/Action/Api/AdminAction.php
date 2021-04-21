@@ -65,9 +65,13 @@ final class AdminAction
   // SEKOLAH START
 
     /**
-     * GET mapping
-     * /service/sekolah
-     * /service/sekolah/{id}
+     * @OA\Get(path="/service/sekolah", tags={"ADMIN"}, summary="Get informasi sekolah",
+     * @OA\Response,
+     * ),
+     * @OA\Get(path="/service/sekolah/{id}", tags={"ADMIN"}, summary="Get informasi sekolah",
+     * @OA\Parameter( in="path", name="id", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="id")), ),
+     * @OA\Response,
+     * )
      */
     public function sekolah(Request $request, Response $response, $args)
     {
