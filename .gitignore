@@ -2,6 +2,7 @@ vendor/
 composer.phar
 composer.lock
 .env.development
+.env.production
 
 # IDE Files
 #-------------------------
