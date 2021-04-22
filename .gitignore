@@ -3,6 +3,7 @@ composer.phar
 composer.lock
 .env.development
 .env.production
+.env.pre-production
 
 # IDE Files
 #-------------------------
