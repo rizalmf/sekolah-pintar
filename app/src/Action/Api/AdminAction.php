@@ -27,8 +27,25 @@ final class AdminAction
 
   // ADMIN USER START
     /**
-     * POST mapping
-     * /service/login
+     * @OA\Post(path="/service/login", tags={"ADMIN"}, summary="Login admin",
+     * @OA\RequestBody(
+    *         @OA\MediaType(
+    *             mediaType="application/json",
+    *             @OA\Schema(
+    *                 @OA\Property(
+    *                     property="username",
+    *                     type="string"
+    *                 ),
+    *                 @OA\Property(
+    *                     property="password",
+    *                     type="string"
+    *                 ),
+    *                 example={"username": "", "password": ""}
+    *             )
+    *         )
+    *     ),
+     * @OA\Response,
+     * ),
      */
     public function login(Request $request, Response $response, $args)
     {
@@ -66,10 +83,14 @@ final class AdminAction
 
     /**
      * @OA\Get(path="/service/sekolah", tags={"ADMIN"}, summary="Get informasi sekolah",
+     * @OA\Parameter( in="header", name="Authorization", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="Authorization")), ),
      * @OA\Response,
      * ),
+     */
+     /**
      * @OA\Get(path="/service/sekolah/{id}", tags={"ADMIN"}, summary="Get informasi sekolah",
      * @OA\Parameter( in="path", name="id", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="id")), ),
+     * @OA\Parameter( in="header", name="Authorization", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="Authorization")), ),
      * @OA\Response,
      * )
      */
@@ -177,9 +198,19 @@ final class AdminAction
   // TAHUN AJARAN START
 
     /**
-     * GET mapping
-     * /service/tahun_ajaran/{sekolah_id}
-     * /service/tahun_ajaran/{sekolah_id}/{id}
+     * @OA\Get(path="/service/tahun_ajaran/{sekolah_id}", tags={"ADMIN"}, summary="Get informasi tahun_ajaran",
+     * @OA\Parameter( in="path", name="sekolah_id", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="sekolah_id")), ),
+     * @OA\Parameter( in="header", name="Authorization", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="Authorization")), ),
+     * @OA\Response,
+     * ),
+     */
+     /**
+     * @OA\Get(path="/service/tahun_ajaran/{sekolah_id}/{id}", tags={"ADMIN"}, summary="Get informasi tahun_ajaran",
+     * @OA\Parameter( in="path", name="sekolah_id", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="sekolah_id")), ),
+     * @OA\Parameter( in="path", name="id", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="id")), ),
+     * @OA\Parameter( in="header", name="Authorization", required=true, type="string", @OA\Schema( type="string", @OA\Items( type="Authorization")), ),
+     * @OA\Response,
+     * )
      */
     public function tahunAjaran(Request $request, Response $response, $args)
     {
